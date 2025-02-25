@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://brbvf6xvs0fxj"]
+
+[ext_resource type="Texture2D" uid="uid://soapjws3afci" path="res://src/assets/tile_0001.png" id="1_unf0c"]
+[ext_resource type="Script" uid="uid://g6m4x0x4du8a" path="res://src/tile.gd" id="2_xam7p"]
+[ext_resource type="Texture2D" uid="uid://d1sbnouk5fl3f" path="res://src/assets/ground_wet.png" id="3_t3ggm"]
+[ext_resource type="Texture2D" uid="uid://b3ci72j3s5pgh" path="res://src/assets/drop.png" id="5_dqf1q"]
+[ext_resource type="Texture2D" uid="uid://dog1f20kl13h" path="res://src/assets/coin.png" id="5_t3ggm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqf1q"]
+
+[node name="Tile" type="TextureRect"]
+texture = ExtResource("1_unf0c")
+script = ExtResource("2_xam7p")
+
+[node name="Sprites" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WaterSprite" type="Sprite2D" parent="Sprites"]
+unique_name_in_owner = true
+texture = ExtResource("3_t3ggm")
+
+[node name="PlantSprite" type="Sprite2D" parent="Sprites"]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+offset = Vector2(0, -8)
+hframes = 5
+frame = 2
+
+[node name="Buttons" type="TabContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dqf1q")
+current_tab = 0
+tabs_visible = false
+
+[node name="Plant" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(23.59, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+icon_alignment = 1
+expand_icon = true
+metadata/_tab_index = 0
+
+[node name="Control" type="Control" parent="Buttons/Plant"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlantButtonSprite" type="Sprite2D" parent="Buttons/Plant/Control"]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+offset = Vector2(0, -8)
+hframes = 5
+frame = 1
+
+[node name="Water" type="Button" parent="Buttons"]
+visible = false
+custom_minimum_size = Vector2(23.59, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+icon = ExtResource("5_dqf1q")
+icon_alignment = 1
+expand_icon = true
+metadata/_tab_index = 1
+
+[node name="Sell" type="Button" parent="Buttons"]
+visible = false
+custom_minimum_size = Vector2(23.59, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+icon = ExtResource("5_t3ggm")
+icon_alignment = 1
+expand_icon = true
+metadata/_tab_index = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Buttons/Plant" to="." method="_on_plant_pressed"]
+[connection signal="pressed" from="Buttons/Water" to="." method="_on_water_pressed"]
+[connection signal="pressed" from="Buttons/Sell" to="." method="_on_sell_pressed"]

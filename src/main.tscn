@@ -1,17 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtop0b244nod2"]
+[gd_scene load_steps=6 format=3 uid="uid://dtop0b244nod2"]
 
-[ext_resource type="Texture2D" uid="uid://soapjws3afci" path="res://src/assets/tile_0001.png" id="1_mjqgc"]
+[ext_resource type="Script" uid="uid://ca5e8vymhgrf5" path="res://src/main.gd" id="1_gh0ne"]
+[ext_resource type="Texture2D" uid="uid://dog1f20kl13h" path="res://src/assets/coin.png" id="2_3cfgd"]
+[ext_resource type="Texture2D" uid="uid://b3ci72j3s5pgh" path="res://src/assets/drop.png" id="2_5q4o7"]
+[ext_resource type="PackedScene" uid="uid://brbvf6xvs0fxj" path="res://src/tile.tscn" id="2_gh0ne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gh0ne"]
+bg_color = Color(0.122703, 0.6619, 0.812678, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Main" type="Control"]
 texture_filter = 1
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gh0ne")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="GridContainer" type="FlowContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+reverse_fill = true
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+color = Color(0.102976, 0.291338, 0.232989, 1)
+
+[node name="Currencies" type="VBoxContainer" parent="GridContainer/ColorRect"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,153 +49,66 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="GridContainer/ColorRect/Currencies"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="GridContainer/ColorRect/Currencies/HBoxContainer2"]
 layout_mode = 2
+texture = ExtResource("2_3cfgd")
+expand_mode = 3
+
+[node name="MoneyLabel" type="Label" parent="GridContainer/ColorRect/Currencies/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/ColorRect/Currencies"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/ColorRect/Currencies/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_5q4o7")
+expand_mode = 3
+
+[node name="WaterProgressBar" type="ProgressBar" parent="GridContainer/ColorRect/Currencies/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_gh0ne")
+value = 50.0
+show_percentage = false
+
+[node name="WaterProgressLabel" type="Label" parent="GridContainer/ColorRect/Currencies/HBoxContainer/WaterProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "100"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Tile" parent="GridContainer" instance=ExtResource("2_gh0ne")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Tile2" parent="GridContainer" instance=ExtResource("2_gh0ne")]
 layout_mode = 2
-text = "A"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Tile3" parent="GridContainer" instance=ExtResource("2_gh0ne")]
 layout_mode = 2
-text = "B"
 
-[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Tile4" parent="GridContainer" instance=ExtResource("2_gh0ne")]
 layout_mode = 2
-text = "C"
 
-[node name="GridContainer" type="FlowContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Tile5" parent="GridContainer" instance=ExtResource("2_gh0ne")]
 layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Tile6" parent="GridContainer" instance=ExtResource("2_gh0ne")]
 layout_mode = 2
-texture = ExtResource("1_mjqgc")
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="Tile7" parent="GridContainer" instance=ExtResource("2_gh0ne")]
 layout_mode = 2
-texture = ExtResource("1_mjqgc")
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect7" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect8" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect9" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect10" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect11" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect12" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect13" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect14" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect15" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect16" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect17" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect18" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect19" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect20" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect21" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect22" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect23" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect24" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect25" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect26" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect27" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect28" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect29" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
-
-[node name="TextureRect30" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_mjqgc")
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
