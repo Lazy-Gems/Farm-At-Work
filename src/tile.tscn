@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://g6m4x0x4du8a" path="res://src/tile.gd" id="2_xam7p"]
 [ext_resource type="Texture2D" uid="uid://d1sbnouk5fl3f" path="res://src/assets/ground_wet.png" id="3_t3ggm"]
 [ext_resource type="Texture2D" uid="uid://b3ci72j3s5pgh" path="res://src/assets/drop.png" id="5_dqf1q"]
-[ext_resource type="Texture2D" uid="uid://dog1f20kl13h" path="res://src/assets/coin.png" id="5_t3ggm"]
+[ext_resource type="Texture2D" uid="uid://dog1f20kl13h" path="res://src/assets/coin/coin.png" id="5_t3ggm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqf1q"]
 

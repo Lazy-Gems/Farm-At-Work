@@ -1,0 +1,28 @@
+[gd_resource type="AnimatedTexture" load_steps=9 format=3 uid="uid://so122nyrv4ps"]
+
+[ext_resource type="Texture2D" uid="uid://dog1f20kl13h" path="res://src/assets/coin/coin.png" id="1_frx47"]
+[ext_resource type="Texture2D" uid="uid://qgo2loo6ytb4" path="res://src/assets/coin/coin2.png" id="2_c2mxd"]
+[ext_resource type="Texture2D" uid="uid://diwmnwk2im4p4" path="res://src/assets/coin/coin3.png" id="3_ng3ov"]
+[ext_resource type="Texture2D" uid="uid://doida0oaiy0rp" path="res://src/assets/coin/coin4.png" id="4_bc26r"]
+[ext_resource type="Texture2D" uid="uid://65u6baqeivie" path="res://src/assets/coin/coin5.png" id="5_meeby"]
+[ext_resource type="Texture2D" uid="uid://bs21rieup1c8n" path="res://src/assets/coin/coin6.png" id="6_6njph"]
+[ext_resource type="Texture2D" uid="uid://dj0crsem0u04f" path="res://src/assets/coin/coin7.png" id="7_bgnjh"]
+[ext_resource type="Texture2D" uid="uid://cdj1m83wxtji4" path="res://src/assets/coin/coin8.png" id="8_8nomu"]
+
+[resource]
+frames = 8
+frame_0/texture = ExtResource("1_frx47")
+frame_1/texture = ExtResource("2_c2mxd")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("3_ng3ov")
+frame_2/duration = 0.15
+frame_3/texture = ExtResource("4_bc26r")
+frame_3/duration = 0.12
+frame_4/texture = ExtResource("5_meeby")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("6_6njph")
+frame_5/duration = 0.15
+frame_6/texture = ExtResource("7_bgnjh")
+frame_6/duration = 0.2
+frame_7/texture = ExtResource("8_8nomu")
+frame_7/duration = 0.25

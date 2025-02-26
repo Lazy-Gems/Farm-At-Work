@@ -22,7 +22,19 @@ func set_water(value):
 	$/root/Main/%WaterProgressLabel.text = str(ceili(water))
 
 
-
 func set_money(value):
 	money = value
 	$/root/Main/%MoneyLabel.text = str(money)
+
+
+func decline_buy():
+	var tween := create_tween()
+	tween.tween_property($/root/Main/%MoneyContainer, "modulate", Color.RED, 0.05)
+	tween.tween_property($/root/Main/%MoneyContainer, "modulate", Color.WHITE, 0.3)
+	
+
+func decline_water():
+	var tween := create_tween()
+	tween.tween_property($/root/Main/%WaterContainer, "modulate", Color.RED, 0.05)
+	tween.tween_property($/root/Main/%WaterContainer, "modulate", Color.WHITE, 0.3)
+	
