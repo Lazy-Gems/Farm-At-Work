@@ -1,9 +1,11 @@
 extends Node
 
-var max_water: float = 100
 var water: float = 0 : set = set_water
+var max_water: float = 100
+var water_fill_speed: float = 1.0
 
-var money: int = 100 : set = set_money
+var money: float = 100 : set = set_money
+var money_per_second: float = 0.25
 
 
 func _ready() -> void:
@@ -12,8 +14,9 @@ func _ready() -> void:
 	money = money
 
 func _physics_process(delta: float) -> void:
+	money += delta * money_per_second
 	if water < max_water:
-		water += delta
+		water += delta * water_fill_speed
 
 
 func set_water(value):
@@ -24,7 +27,7 @@ func set_water(value):
 
 func set_money(value):
 	money = value
-	$/root/Main/%MoneyLabel.text = str(money)
+	$/root/Main/%MoneyLabel.text = str(int(money))
 
 
 func decline_buy():

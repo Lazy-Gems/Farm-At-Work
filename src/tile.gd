@@ -10,7 +10,7 @@ const PLANTS = [
 const plant_cost: int = 25
 const water_cost: float = 15
 const time_to_dry: float = 60
-const time_to_evolve: float = 20
+const time_to_evolve: float = 15
 
 var plant: Texture
 var plant_progress: float = 0
@@ -23,6 +23,8 @@ func _ready() -> void:
 	%Buttons.current_tab = 0
 	plant = PLANTS.pick_random()
 	%PlantButtonSprite.texture = plant
+	var anim = %SpriteAnimationPlayer
+	anim.seek(randf_range(0, anim.current_animation_length))
 
 
 func _physics_process(delta: float) -> void:
@@ -34,6 +36,8 @@ func _physics_process(delta: float) -> void:
 				%PlantSprite.frame = 3
 			if %PlantSprite.frame < 4 and plant_progress >= time_to_evolve * 2:
 				%PlantSprite.frame = 4
+			if %PlantSprite.frame == 4 and plant_progress >= time_to_evolve * 3:
+				%PlantSprite.frame = 1
 				%Buttons.current_tab = 2
 
 

@@ -1,10 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtop0b244nod2"]
+[gd_scene load_steps=15 format=3 uid="uid://dtop0b244nod2"]
 
 [ext_resource type="Script" uid="uid://ca5e8vymhgrf5" path="res://src/main.gd" id="1_gh0ne"]
 [ext_resource type="Texture2D" uid="uid://dog1f20kl13h" path="res://src/assets/coin/coin.png" id="2_3cfgd"]
 [ext_resource type="Texture2D" uid="uid://b3ci72j3s5pgh" path="res://src/assets/drop.png" id="2_5q4o7"]
 [ext_resource type="Texture2D" uid="uid://so122nyrv4ps" path="res://src/assets/spinning_coin.tres" id="2_fyndt"]
 [ext_resource type="PackedScene" uid="uid://brbvf6xvs0fxj" path="res://src/tile.tscn" id="2_gh0ne"]
+[ext_resource type="Texture2D" uid="uid://c26d3l06hot6b" path="res://src/assets/drop1.png" id="3_uewes"]
+[ext_resource type="Texture2D" uid="uid://dd24qp3xp7mhu" path="res://src/assets/drop2.png" id="4_kqbth"]
+[ext_resource type="Texture2D" uid="uid://cjj2k4lhi7aij" path="res://src/assets/carrot_bag.png" id="5_kmhfv"]
+[ext_resource type="Texture2D" uid="uid://qxpvd3tseh3" path="res://src/assets/drop3.png" id="5_srxbw"]
+[ext_resource type="Texture2D" uid="uid://56l85iqrovld" path="res://src/assets/drop4.png" id="6_d3u4l"]
+[ext_resource type="Texture2D" uid="uid://byvdc4msq4ok6" path="res://src/assets/drop5.png" id="7_mlv6i"]
+[ext_resource type="Texture2D" uid="uid://bbfrfv4g57h7v" path="res://src/assets/drop6.png" id="8_kqbth"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_tb146"]
+frames = 6
+frame_0/texture = ExtResource("3_uewes")
+frame_1/texture = ExtResource("4_kqbth")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("5_srxbw")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("6_d3u4l")
+frame_3/duration = 0.2
+frame_4/texture = ExtResource("7_mlv6i")
+frame_4/duration = 0.2
+frame_5/texture = ExtResource("8_kqbth")
+frame_5/duration = 0.2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gh0ne"]
 bg_color = Color(0.122703, 0.6619, 0.812678, 1)
@@ -92,7 +113,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Stats/HBoxContainer/MarginContainer/Currencies/WaterSettingsButton/WaterContainer"]
 layout_mode = 2
-texture = ExtResource("2_5q4o7")
+texture = SubResource("AnimatedTexture_tb146")
 expand_mode = 3
 
 [node name="WaterProgressBar" type="ProgressBar" parent="GridContainer/Stats/HBoxContainer/MarginContainer/Currencies/WaterSettingsButton/WaterContainer"]
@@ -148,6 +169,44 @@ layout_mode = 2
 [node name="Tile6" parent="GridContainer" instance=ExtResource("2_gh0ne")]
 layout_mode = 2
 
+[node name="UpgradeCrop" type="Button" parent="GridContainer"]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer/UpgradeCrop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer/UpgradeCrop/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/UpgradeCrop/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+texture = ExtResource("5_kmhfv")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="AddTileCost" type="HBoxContainer" parent="GridContainer/UpgradeCrop/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/UpgradeCrop/VBoxContainer/AddTileCost"]
+layout_mode = 2
+texture = ExtResource("2_fyndt")
+expand_mode = 3
+
+[node name="MoneyLabel" type="Label" parent="GridContainer/UpgradeCrop/VBoxContainer/AddTileCost"]
+layout_mode = 2
+text = "250"
+
 [node name="AddTile" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -194,55 +253,60 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="TabContainer" type="TabContainer" parent="Settings"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings"]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TabContainer" type="TabContainer" parent="Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 current_tab = 1
 tabs_visible = false
 
-[node name="GeneralSettings" type="PanelContainer" parent="Settings/TabContainer"]
+[node name="GeneralSettings" type="PanelContainer" parent="Settings/HBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Settings/TabContainer/GeneralSettings"]
+[node name="MarginContainer" type="MarginContainer" parent="Settings/HBoxContainer/TabContainer/GeneralSettings"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/GeneralSettings/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/HBoxContainer/TabContainer/GeneralSettings/MarginContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Settings/TabContainer/GeneralSettings/MarginContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="Settings/HBoxContainer/TabContainer/GeneralSettings/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 text = "BL"
 
-[node name="Button2" type="Button" parent="Settings/TabContainer/GeneralSettings/MarginContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="Settings/HBoxContainer/TabContainer/GeneralSettings/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 text = "BR"
 
-[node name="WaterSettings" type="PanelContainer" parent="Settings/TabContainer"]
+[node name="WaterSettings" type="PanelContainer" parent="Settings/HBoxContainer/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Settings/TabContainer/WaterSettings"]
+[node name="MarginContainer" type="MarginContainer" parent="Settings/HBoxContainer/TabContainer/WaterSettings"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/WaterSettings/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Settings/TabContainer/WaterSettings/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(56, 0)
+[node name="WaterFillSpeedUpgrade" type="Button" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/WaterSettings/MarginContainer/HBoxContainer/Button"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/WaterFillSpeedUpgrade"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -251,49 +315,82 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="AddTileCost" type="HBoxContainer" parent="Settings/TabContainer/WaterSettings/MarginContainer/HBoxContainer/Button/VBoxContainer"]
+[node name="AddTileCost" type="HBoxContainer" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/WaterFillSpeedUpgrade/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Settings/TabContainer/WaterSettings/MarginContainer/HBoxContainer/Button/VBoxContainer/AddTileCost"]
+[node name="TextureRect" type="TextureRect" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/WaterFillSpeedUpgrade/VBoxContainer/AddTileCost"]
 layout_mode = 2
 texture = ExtResource("2_5q4o7")
 expand_mode = 3
 
-[node name="MoneyLabel" type="Label" parent="Settings/TabContainer/WaterSettings/MarginContainer/HBoxContainer/Button/VBoxContainer/AddTileCost"]
+[node name="MoneyLabel" type="Label" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/WaterFillSpeedUpgrade/VBoxContainer/AddTileCost"]
 layout_mode = 2
-text = "↑"
+text = "+ Water Fill Speed"
 
-[node name="AddTileCost2" type="HBoxContainer" parent="Settings/TabContainer/WaterSettings/MarginContainer/HBoxContainer/Button/VBoxContainer"]
+[node name="AddTileCost2" type="HBoxContainer" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/WaterFillSpeedUpgrade/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Settings/TabContainer/WaterSettings/MarginContainer/HBoxContainer/Button/VBoxContainer/AddTileCost2"]
+[node name="TextureRect" type="TextureRect" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/WaterFillSpeedUpgrade/VBoxContainer/AddTileCost2"]
 layout_mode = 2
 texture = ExtResource("2_3cfgd")
 expand_mode = 3
 
-[node name="MoneyLabel" type="Label" parent="Settings/TabContainer/WaterSettings/MarginContainer/HBoxContainer/Button/VBoxContainer/AddTileCost2"]
+[node name="MoneyLabel" type="Label" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/WaterFillSpeedUpgrade/VBoxContainer/AddTileCost2"]
 layout_mode = 2
 text = "250"
 
-[node name="Control" type="Control" parent="Settings"]
+[node name="MaxWaterUpgrade" type="Button" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-mouse_filter = 2
 
-[node name="Button" type="Button" parent="Settings/Control"]
-custom_minimum_size = Vector2(64, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/MaxWaterUpgrade"]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -8.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="AddTileCost" type="HBoxContainer" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/MaxWaterUpgrade/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/MaxWaterUpgrade/VBoxContainer/AddTileCost"]
+layout_mode = 2
+texture = ExtResource("2_5q4o7")
+expand_mode = 3
+
+[node name="MoneyLabel" type="Label" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/MaxWaterUpgrade/VBoxContainer/AddTileCost"]
+layout_mode = 2
+text = "+ Max Water"
+
+[node name="AddTileCost2" type="HBoxContainer" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/MaxWaterUpgrade/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/MaxWaterUpgrade/VBoxContainer/AddTileCost2"]
+layout_mode = 2
+texture = ExtResource("2_3cfgd")
+expand_mode = 3
+
+[node name="MoneyLabel" type="Label" parent="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/MaxWaterUpgrade/VBoxContainer/AddTileCost2"]
+layout_mode = 2
+text = "250"
+
+[node name="CloseSettings" type="Button" parent="Settings/HBoxContainer"]
+modulate = Color(1, 0.451754, 0.389538, 1)
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
 text = "X"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="GridContainer/Stats/HBoxContainer/MarginContainer/Currencies/WaterSettingsButton" to="." method="_on_water_settings_button_pressed"]
+[connection signal="pressed" from="GridContainer/UpgradeCrop" to="." method="_on_upgrade_crop_pressed"]
 [connection signal="pressed" from="GridContainer/AddTile" to="." method="_on_add_tile_pressed"]
+[connection signal="pressed" from="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/WaterFillSpeedUpgrade" to="." method="_on_water_fill_speed_upgrade_pressed"]
+[connection signal="pressed" from="Settings/HBoxContainer/TabContainer/WaterSettings/MarginContainer/HBoxContainer/MaxWaterUpgrade" to="." method="_on_max_water_upgrade_pressed"]
+[connection signal="pressed" from="Settings/HBoxContainer/CloseSettings" to="." method="_on_close_settings_pressed"]
