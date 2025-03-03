@@ -1,31 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtop0b244nod2"]
+[gd_scene load_steps=9 format=3 uid="uid://dtop0b244nod2"]
 
 [ext_resource type="Script" uid="uid://ca5e8vymhgrf5" path="res://src/main.gd" id="1_gh0ne"]
 [ext_resource type="Texture2D" uid="uid://dog1f20kl13h" path="res://src/assets/coin/coin.png" id="2_3cfgd"]
 [ext_resource type="Texture2D" uid="uid://b3ci72j3s5pgh" path="res://src/assets/drop.png" id="2_5q4o7"]
 [ext_resource type="Texture2D" uid="uid://so122nyrv4ps" path="res://src/assets/spinning_coin.tres" id="2_fyndt"]
 [ext_resource type="PackedScene" uid="uid://brbvf6xvs0fxj" path="res://src/tile.tscn" id="2_gh0ne"]
-[ext_resource type="Texture2D" uid="uid://c26d3l06hot6b" path="res://src/assets/drop1.png" id="3_uewes"]
-[ext_resource type="Texture2D" uid="uid://dd24qp3xp7mhu" path="res://src/assets/drop2.png" id="4_kqbth"]
+[ext_resource type="Texture2D" uid="uid://n6wlbjeofaat" path="res://src/assets/water_drop.tres" id="3_rlaii"]
 [ext_resource type="Texture2D" uid="uid://cjj2k4lhi7aij" path="res://src/assets/carrot_bag.png" id="5_kmhfv"]
-[ext_resource type="Texture2D" uid="uid://qxpvd3tseh3" path="res://src/assets/drop3.png" id="5_srxbw"]
-[ext_resource type="Texture2D" uid="uid://56l85iqrovld" path="res://src/assets/drop4.png" id="6_d3u4l"]
-[ext_resource type="Texture2D" uid="uid://byvdc4msq4ok6" path="res://src/assets/drop5.png" id="7_mlv6i"]
-[ext_resource type="Texture2D" uid="uid://bbfrfv4g57h7v" path="res://src/assets/drop6.png" id="8_kqbth"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_tb146"]
-frames = 6
-frame_0/texture = ExtResource("3_uewes")
-frame_1/texture = ExtResource("4_kqbth")
-frame_1/duration = 0.2
-frame_2/texture = ExtResource("5_srxbw")
-frame_2/duration = 0.2
-frame_3/texture = ExtResource("6_d3u4l")
-frame_3/duration = 0.2
-frame_4/texture = ExtResource("7_mlv6i")
-frame_4/duration = 0.2
-frame_5/texture = ExtResource("8_kqbth")
-frame_5/duration = 0.2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gh0ne"]
 bg_color = Color(0.122703, 0.6619, 0.812678, 1)
@@ -113,7 +94,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="GridContainer/Stats/HBoxContainer/MarginContainer/Currencies/WaterSettingsButton/WaterContainer"]
 layout_mode = 2
-texture = SubResource("AnimatedTexture_tb146")
+texture = ExtResource("3_rlaii")
 expand_mode = 3
 
 [node name="WaterProgressBar" type="ProgressBar" parent="GridContainer/Stats/HBoxContainer/MarginContainer/Currencies/WaterSettingsButton/WaterContainer"]
@@ -231,7 +212,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="GridContainer/AddTile/VBoxContainer/AddTileCost"]
 layout_mode = 2
-texture = ExtResource("2_fyndt")
+texture = ExtResource("2_3cfgd")
 expand_mode = 3
 
 [node name="MoneyLabel" type="Label" parent="GridContainer/AddTile/VBoxContainer/AddTileCost"]
